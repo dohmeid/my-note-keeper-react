@@ -1,5 +1,5 @@
 :root {
-  --dark-grey-shade: #1e2125;
+  --dark-grey-shade: #6d6f72;
   --medium-grey-shade: rgb(166, 163, 163);
   --light-grey-shade: rgb(239, 239, 239);
   --blue-shade: #1D9BF0;
@@ -9,6 +9,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {

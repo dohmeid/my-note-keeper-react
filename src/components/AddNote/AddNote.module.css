@@ -1,0 +1,52 @@
+.addNoteContainer {
+    width: 45rem;
+    height: 11rem;
+    margin-top: 3rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.7rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+
+    input[type="text"],
+    textarea {
+        border: none;
+        font-weight: 500;
+        padding: 0.4rem;
+        color: var(--dark-grey-shade);
+    }
+
+    input[type="text"] {
+        height: 2rem;
+        font-size: 1rem;
+    }
+
+    textarea {
+        height: 4rem;
+        resize: none;
+    }
+
+    button {
+        align-self: end;
+        padding: 0.6rem 1rem;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        background-color: transparent;
+        color: var(--dark-grey-shade);
+
+        &:hover {
+            border: 1px solid var(--medium-grey-shade);
+            background-color: rgba(51, 51, 51, 0.05);
+            transition: 0.5s;
+        }
+
+        &:focus {
+            outline: 2px solid black;
+        }
+    }
+}
