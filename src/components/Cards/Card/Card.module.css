@@ -1,0 +1,31 @@
+.card {
+    border-radius: 1rem;
+    border: 1.5px solid var(--light-grey-shade);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+
+    h3 {}
+
+    h4 {}
+
+    h5 {
+        width: fit-content;
+        padding: 0.4rem 0.5rem;
+        font-size: 0.7rem;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5rem;
+        cursor: pointer;
+        color: var(--dark-grey-shade);
+        background-color: var(--light-grey-shade);
+    }
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
+        transition: 0.5s;
+    }
+
+}
