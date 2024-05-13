@@ -1,0 +1,27 @@
+.searchContainer {
+    position: relative;
+
+    input[type="search"] {
+        height: 3em;
+        width: 40rem;
+        padding-inline-start: 3rem;
+        padding-inline-end: 1.5rem;
+        font-size: 1em;
+        border: none;
+        border-radius: 0.4rem;
+        border-bottom: 1px solid var(--light-grey-shade);
+        background-color:  var(--light-grey-shade);
+
+        &::placeholder {
+            color: var(--medium-grey-shade);
+        }
+    }
+
+    & i {
+        position: absolute;
+        top: 0.8rem;
+        left: 1rem;
+        color: var(--grey-shade);
+        font-weight: bold;
+    }
+}
