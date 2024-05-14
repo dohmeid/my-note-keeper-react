@@ -29,6 +29,8 @@ const AddNote = () => {
         setTitle("");
         setContent("");
       }
+
+      //add here the post method
     }
 
     //the form itself was clicked for the first time

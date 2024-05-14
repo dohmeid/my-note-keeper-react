@@ -33,31 +33,30 @@ form {
 
     .buttons {
         align-self: end;
-
-    }
-
-    .closeBtn {
-        color: red;
-    }
-
-    button {
-        padding: 0.6rem 1rem;
-        text-align: center;
-        font-weight: bold;
-        border-radius: 0.5rem;
-        border: 1px solid transparent;
-        cursor: pointer;
-        background-color: transparent;
-        color: var(--dark-grey-shade);
-
-        &:hover {
-            border: 1px solid var(--medium-grey-shade);
-            background-color: rgba(79, 79, 79, 0.05);
-            transition: 0.5s;
+        
+        .closeBtn {
+            color: red;
         }
 
-        &:focus {
-            outline: 2px solid black;
+        button {
+            padding: 0.6rem 1rem;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            background-color: transparent;
+            color: var(--dark-grey-shade);
+
+            &:hover {
+                border: 1px solid var(--medium-grey-shade);
+                background-color: rgba(79, 79, 79, 0.05);
+                transition: 0.5s;
+            }
+
+            &:focus {
+                outline: 2px solid black;
+            }
         }
     }
 }
