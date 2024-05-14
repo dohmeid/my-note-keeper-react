@@ -5,22 +5,18 @@ form {
     padding: 1rem 1.5rem;
     border-radius: 0.7rem;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
-   
-
-    .formInputs{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
     input[type="text"],
-    textarea,p {
+    textarea {
         border: none;
         font-weight: 500;
         padding: 0.4rem;
         color: var(--dark-grey-shade);
 
-        &:focus{
+        &:focus {
             outline: none;
         }
     }
@@ -31,16 +27,16 @@ form {
     }
 
     textarea {
-        height: 4rem;
         resize: none;
+        font-size: 1.1rem;
     }
 
     .buttons {
         align-self: end;
-        
+
     }
 
-    .closeBtn{
+    .closeBtn {
         color: red;
     }
 
