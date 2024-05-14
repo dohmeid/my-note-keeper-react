@@ -7,6 +7,7 @@ const Card = () => {
         <h4>Notes Keeper</h4>
         <h3>React Task</h3>
         <h5>date here</h5>
+        <i class="bi bi-trash"></i>
     </div>
   );
 };
