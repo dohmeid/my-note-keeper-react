@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import classes from "./Card.module.css";
 
-const Card = () => {
+const Card = ({ noteData }) => {
   //STATES & HOOKS------------------------------------------------------------------
+  const { title, content, date } = noteData;
   const [showDelete, setShowDelete] = useState(false);
 
   //FUNCTIONS----------------------------------------------------------------
@@ -19,16 +20,18 @@ const Card = () => {
   //the delete button was clicked
   const deleteClickHandler = (e) => {
     setShowDelete(false);
+    
+
+
   };
 
   //JSX CODE---------------------------------------------------------------
-
   return (
     <>
       <div className={classes.card}>
-        <h4>Notes Keeper</h4>
-        <h3>React Task</h3>
-        <h5>date here</h5>
+        <h4>{title}</h4>
+        <h3>{content}</h3>
+        <h5>{date}</h5>
         <i className="bi bi-trash" onClick={openDeleteClickHandler}></i>
       </div>
 

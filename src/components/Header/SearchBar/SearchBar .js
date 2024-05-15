@@ -2,11 +2,11 @@ import React from "react";
 import classes from "./SearchBar.module.css";
 
 const SearchBar = () => {
+  //STATES & HOOKS-------------------------------------------------------------------
 
-
-    //FUNCTIONS----------------------------------------------------------------
-    //Search bar functionality: displays only events that match the search query
-    const searchNameChangeHandler = (e) => {
+  //FUNCTIONS----------------------------------------------------------------
+  //Search bar functionality: displays only events that match the search query
+  const searchNameChangeHandler = (e) => {
     /*  let searchName = e.target.value;
 
       //iterate through all cards and add only cards that match the search query to the searchResultCards array
@@ -19,9 +19,9 @@ const SearchBar = () => {
       }
       props.setFilteredDataArray(searchResultCards);
       setIsChanged(true);*/
-  }
+  };
 
-
+  //JSX CODE---------------------------------------------------------------
   return (
     <div className={classes.searchContainer}>
       <i className="bi bi-search" aria-hidden="true"></i>

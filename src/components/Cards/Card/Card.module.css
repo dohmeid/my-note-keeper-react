@@ -1,4 +1,8 @@
 .card {
+    width: 16rem;
+    height: 13rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
     border-radius: 1rem;
     border: 1.5px solid var(--light-grey-shade);
     padding: 1rem 1rem 0rem 1rem;
@@ -33,9 +37,13 @@
         align-items: center;
         border-radius: 3rem;
         cursor: pointer;
+        color: transparent;
+        
 
         &:hover {
             border: 1px solid red;
+            color: black;
+            transition: 1s;
         }
     }
 

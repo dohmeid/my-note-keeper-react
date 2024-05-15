@@ -1,4 +1,4 @@
-.App{
+.appContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
