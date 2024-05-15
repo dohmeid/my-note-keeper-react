@@ -23,7 +23,10 @@ function App() {
         originalNotesArray={originalNotesArray}
         setOriginalNotesArray={setOriginalNotesArray}
       />
-      <Cards newNotesArray={newNotesArray} />
+      <Cards newNotesArray={newNotesArray} 
+       setNewNotesArray={setNewNotesArray}
+       originalNotesArray={originalNotesArray}
+       setOriginalNotesArray={setOriginalNotesArray}/>
     </div>
   );
 }

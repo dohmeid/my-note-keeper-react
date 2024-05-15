@@ -38,18 +38,17 @@
         border-radius: 3rem;
         cursor: pointer;
         color: transparent;
-        
-
-        &:hover {
-            border: 1px solid red;
-            color: black;
-            transition: 1s;
-        }
     }
 
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
         transition: 0.5s;
+
+        i{
+            border: 1px solid red;
+            color: black;
+            transition: 1s;
+        }
     }
 
 }

@@ -3,12 +3,16 @@ import classes from "./Cards.module.css";
 import Card from "./Card/Card";
 
 const Cards = (props) => {
-  //the props that we get form the parent are -> props.notesArray , props.setNotesArray
-
   const arr = props.newNotesArray;
   //rendering the notes list
   const NOTES_LIST = arr.map((note, index) => (
-    <Card key={index} noteData={note} />
+    <Card
+      key={index}
+      noteData={note}
+      setNewNotesArray={props.setNewNotesArray}
+      originalNotesArray={props.originalNotesArray}
+      setOriginalNotesArray={props.setOriginalNotesArray}
+    />
   ));
 
   return (
