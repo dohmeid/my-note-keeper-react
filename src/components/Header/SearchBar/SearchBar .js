@@ -1,27 +1,39 @@
 import React from "react";
 import classes from "./SearchBar.module.css";
 
-const SearchBar = () => {
-  //STATES & HOOKS-------------------------------------------------------------------
+const SearchBar = ({ originalNotesArray, setNewNotesArray }) => {
+  //****************************STATES & HOOKS**********************************
 
-  //FUNCTIONS----------------------------------------------------------------
+
+  //****************************EVENT LISTENERS****************************
+
+  //****************************FUNCTIONS**********************************
   //Search bar functionality: displays only events that match the search query
-  const searchNameChangeHandler = (e) => {
-    /*  let searchName = e.target.value;
+  const handleSearch = (e) => {
+    e.preventDefault();
+    let searchQuery = e.target.value.toLowerCase(); //get the search query
 
-      //iterate through all cards and add only cards that match the search query to the searchResultCards array
-      let searchResultCards = [];
-      for (let cardData of props.originalDataArray) {
-          let name = cardData.name;
-          if (name.indexOf(searchName) > -1) { //check if searchName is a substring of card name
-              searchResultCards.push(cardData); //add to filteredArray
-          }
-      }
-      props.setFilteredDataArray(searchResultCards);
-      setIsChanged(true);*/
+    if (searchQuery.length > 0) {
+      console.log(originalNotesArray);
+      let filteredNotesArray = originalNotesArray.filter(
+        (note) =>
+          note.title.toLowerCase().includes(searchQuery) ||
+          note.content.toLowerCase().includes(searchQuery)
+      );
+      setNewNotesArray(filteredNotesArray);
+    }
+
+    /*  let filteredNotesArray = notesArray.filter(
+      (note) =>
+        note.title.toLowerCase().includes(searchQuery) ||
+        note.content.toLowerCase().includes(searchQuery)
+    );
+    //displayTasks(filteredTasksArray);
+    setNotesArray(filteredNotesArray);*/
   };
 
-  //JSX CODE---------------------------------------------------------------
+  // onKeyUp={handleSearch}
+  //****************************JSX CODE**********************************
   return (
     <div className={classes.searchContainer}>
       <i className="bi bi-search" aria-hidden="true"></i>
@@ -30,7 +42,7 @@ const SearchBar = () => {
         name="search"
         aria-label="search for a note"
         placeholder="Search..."
-        onChange={searchNameChangeHandler}
+        onChange={handleSearch}
       />
     </div>
   );

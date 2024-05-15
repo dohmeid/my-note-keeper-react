@@ -6,15 +6,24 @@ import Cards from "./components/Cards/Cards";
 import { NOTES } from "./data/notes";
 
 function App() {
-  //STATES & HOOKS-------------------------------------------------------------------
-  const [notesArray, setNotesArray] = useState(NOTES); //this state is initialized to the original notes array from the API
+  //****************************STATES & HOOKS**********************************
+  const [originalNotesArray, setOriginalNotesArray] = useState(NOTES); //this state is initialized to the original notes array from the API
+  const [newNotesArray, setNewNotesArray] = useState(NOTES); //this array contains filtered group of data from the originalArray
 
-  //JSX CODE---------------------------------------------------------------
+  //****************************JSX CODE**********************************
   return (
     <div className="appContainer">
-      <Header />
-      <AddNote notesArray={notesArray} setNotesArray={setNotesArray} />
-      <Cards notesArray={notesArray} setNotesArray={setNotesArray} />
+      <Header
+        originalNotesArray={originalNotesArray}
+        newNotesArray={newNotesArray}
+        setNewNotesArray={setNewNotesArray}
+      />
+      <AddNote
+        setNewNotesArray={setNewNotesArray}
+        originalNotesArray={originalNotesArray}
+        setOriginalNotesArray={setOriginalNotesArray}
+      />
+      <Cards newNotesArray={newNotesArray} />
     </div>
   );
 }

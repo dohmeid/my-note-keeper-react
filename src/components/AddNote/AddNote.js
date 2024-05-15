@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import classes from "./AddNote.module.css";
 
-const AddNote = ({ notesArray, setNotesArray }) => {
-  //STATES & HOOKS------------------------------------------------------------------
+const AddNote = ({setNewNotesArray , originalNotesArray, setOriginalNotesArray}) => {
+  //****************************STATES & HOOKS**********************************
   const [isExpanded, setIsExpanded] = useState(false); //to expand the form when clicking on it
   const [rows, setRows] = useState(1);
   const [formData, setFormData] = useState({
@@ -13,10 +13,10 @@ const AddNote = ({ notesArray, setNotesArray }) => {
 
   useEffect(() => {
     console.log("in AddNote.js");
-    console.log(notesArray);
+    console.log(originalNotesArray);
   }, []); // Empty dependency array means this effect runs once after the initial render
 
-  //EVENT LISTENERS----------------------------------------------------------------
+  //****************************EVENT LISTENERS****************************
   //this function activates when the user clicks on the Form
   const handleFormClick = () => {
     setIsExpanded(true); //add the input feilds
@@ -31,19 +31,24 @@ const AddNote = ({ notesArray, setNotesArray }) => {
       // Form is valid, submit data
       console.log("entered form data = ");
       console.log(formData);
-      
-     setNotesArray([ 
-    ...notesArray, // that contains all the old items
-    { title: formData.title, content: formData.content, date:"15/5/2024" } // and one new item at the end
-  ]
-);
+
+      setOriginalNotesArray([
+        ...originalNotesArray, // that contains all the old items
+        { title: formData.title, content: formData.content, date: "15/5/2024" }, // and one new item at the end
+      ]);
+
+      setNewNotesArray([
+        ...originalNotesArray, // that contains all the old items
+        { title: formData.title, content: formData.content, date: "15/5/2024" }, // and one new item at the end
+      ]);
+
 
       setIsExpanded(false);
       setRows(1);
       setFormData((prevState) => ({ ...prevState, title: "", content: "" })); //reset the form input fields
     } else {
       // Form is invalid, do nothing
-      alert("Form is invalid - empty inputs are not allowed")
+      alert("Form is invalid - empty inputs are not allowed");
     }
   };
 
@@ -66,7 +71,7 @@ const AddNote = ({ notesArray, setNotesArray }) => {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  //FUNCTIONS----------------------------------------------------------------------
+  //****************************FUNCTIONS**********************************
   //this function validates the form input fields
   const validateForm = () => {
     let errors = false;
@@ -83,7 +88,7 @@ const AddNote = ({ notesArray, setNotesArray }) => {
     return errors === false; //reture true if the form is valid -no errors
   };
 
-  //JSX CODE---------------------------------------------------------------
+  //****************************JSX CODE**********************************
   return (
     <form onClick={handleFormClick} onSubmit={handleFormSubmission}>
       {isExpanded && (
