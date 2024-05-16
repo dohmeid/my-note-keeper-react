@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import classes from "./Card.module.css";
 import EditDialog from "./EditDialog/EditDialog";
 import DeleteDialog from "./DeleteDialog/DeleteDialog";
+import { deleteNote } from "../../../services/notesApi";
+import { fetchData } from "../../../utils/functions";
 
-const Card = ({noteData,setNewNotesArray,originalNotesArray,setOriginalNotesArray,}) => {
-  
+const Card = ({ noteData, setNotesArray }) => {
+
   //****************************STATES & HOOKS**********************************
   const [showDelete, setShowDelete] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [noteColor, setNoteColor] = useState("");
 
-  useEffect(() => {    
+  useEffect(() => {
     setNoteColor(getRandomColor());
     //console.log(noteColor);
     //console.log("noteColor");
@@ -38,23 +40,17 @@ const Card = ({noteData,setNewNotesArray,originalNotesArray,setOriginalNotesArra
   };
 
   //this function activates when the user clicks on the delete button
-  const handleDeleteButtonClick = (e) => {
-    console.log("delete button was clicked");
+  const handleDeleteButtonClick = async (e) => {
     e.stopPropagation();
 
-    //delete the current note from the notes list
-    setOriginalNotesArray(
-      originalNotesArray.filter((note) => 
-        note.title !== noteData.title && note.content !== noteData.content));
-
-    setNewNotesArray(
-      originalNotesArray.filter(
-        (note) => note.title !== noteData.title && note.content !== noteData.content
-      )
-    );
-
+    try {
+      await deleteNote(noteData._id);
+      fetchData(setNotesArray);
+    } catch (error) {
+      console.error("Error deleting the note:", error);
+    }
     setShowDelete(false);
-  };
+  }
 
   //****************************FUNCTIONS**********************************
   function getRandomColor() {
@@ -64,21 +60,21 @@ const Card = ({noteData,setNewNotesArray,originalNotesArray,setOriginalNotesArra
       green: "#aae793",
       blue: "#b2e2fa"
     };
-  
+
     const colorNames = Object.keys(noteColors);
     const randomIndex = Math.floor(Math.random() * colorNames.length);
     const randomColorName = colorNames[randomIndex];
-  
+
     return noteColors[randomColorName];
   }
 
   //****************************JSX CODE**********************************
   return (
     <>
-      <div className={classes.card} onClick={handleNoteClick}  style={{ backgroundColor: noteColor }}>
+      <div className={classes.card} onClick={handleNoteClick} style={{ backgroundColor: noteColor }}>
         <h4>{noteData.title}</h4>
         <h3>{noteData.content}</h3>
-        <h5 className="date">{noteData.date}</h5>
+        <h5 className="date">{noteData.creationDate.slice(0, 10)}</h5>
         <i className="bi bi-trash" onClick={handleTrashIconClick}></i>
       </div>
 
@@ -87,9 +83,7 @@ const Card = ({noteData,setNewNotesArray,originalNotesArray,setOriginalNotesArra
           noteData={noteData}
           setShowEdit={setShowEdit}
           handleCloseButtonClick={handleCloseButtonClick}
-          setNewNotesArray={setNewNotesArray}
-          originalNotesArray={originalNotesArray}
-          setOriginalNotesArray={setOriginalNotesArray}
+          setNotesArray={setNotesArray}
         />
       )}
 

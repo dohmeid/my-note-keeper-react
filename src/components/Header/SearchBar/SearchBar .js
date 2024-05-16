@@ -1,18 +1,18 @@
 import React from "react";
 import classes from "./SearchBar.module.css";
 
-const SearchBar = ({ originalNotesArray, setNewNotesArray }) => {
+const SearchBar = ({ notesArray }) => {
 
   //this handler activates when the user enters an input to the search bar
   const handleSearchQuery = (e) => {
     let searchQuery = e.target.value.toLowerCase();
 
-    let filteredNotesArray = originalNotesArray.filter((note) =>
+    let filteredNotesArray = notesArray.filter((note) =>
       note.title.toLowerCase().includes(searchQuery) || 
       note.content.toLowerCase().includes(searchQuery)
     );
 
-    setNewNotesArray(filteredNotesArray); //to re-render the new filtered notes list
+   // setNewNotesArray(filteredNotesArray); //to re-render the new filtered notes list
   };
 
   return (

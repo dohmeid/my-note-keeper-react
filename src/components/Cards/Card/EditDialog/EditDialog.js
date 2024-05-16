@@ -1,43 +1,40 @@
-import React , { useState }from "react";
+import React, { useState } from "react";
 import classes from "./EditDialog.module.css";
+import { updateNote } from "../../../../services/notesApi";
+import { fetchData, isFormValid } from "../../../../utils/functions";
 
-const EditDialog = ({noteData, setShowEdit,handleCloseButtonClick,  setNewNotesArray, originalNotesArray, setOriginalNotesArray}) => {
+const EditDialog = ({ noteData, setShowEdit, handleCloseButtonClick, setNotesArray }) => {
 
   const [formData, setFormData] = useState({
-    newTitle: noteData.title,
-    newContent: noteData.content,
-    newDate: noteData.date,
+    title: noteData.title,
+    content: noteData.content,
+    creationDate: noteData.creationDate.slice(0, 10),
     errors: false,
   });
 
   //****************************EVENT LISTENERS****************************
   //this function activates when the user clicks on Done button - to submit the form
-  const handleFormSubmission = (e) => {
+  const handleFormSubmission = async (e) => {
     e.preventDefault(); //stop the default behaviour of submitting the input's values to the website url
 
-    if (isFormValid()) {
-      //the form is valid, submit data
-      //console.log("entered form data = ");
-      //console.log(formData);
+    if (isFormValid(formData, setFormData, true)) {
+      let newNote = {
+        "_id": noteData._id,
+        "title": formData.title,
+        "content": formData.content,
+        "creationDate": formData.creationDate,
+      }
 
-      const newArray = originalNotesArray.map((note) => {
-        if ( note.title === noteData.title && note.content === noteData.content && note.date === noteData.date) {
-          return {
-            title: formData.newTitle,
-            content: formData.newContent,
-            date: formData.newDate,};
-        } 
-        else {
-          return note;
-        }
-      });
+      try {
+        await updateNote(noteData._id, newNote);
+        fetchData(setNotesArray);
+      } catch (error) {
+        console.error("Error deleting the note:", error);
+      }
 
-      setOriginalNotesArray(newArray);
-      setNewNotesArray(newArray);
       setShowEdit(false);
-    } 
+    }
     else {
-      //the form is invalid, do nothing
       alert("Form is invalid - empty inputs are not allowed");
     }
   };
@@ -48,39 +45,23 @@ const EditDialog = ({noteData, setShowEdit,handleCloseButtonClick,  setNewNotesA
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  //****************************FUNCTIONS**********************************
-  //this function validates the form input fields
-  const isFormValid = () => {
-    let errors = false;
-    //check if inputs are empty or spaces
-    if (
-      formData.newTitle.trim().length === 0 || formData.newContent.trim().length === 0 ||
-      formData.newDate === null || formData.newDate === ""
-    ) {
-      errors = true;
-    }
-
-    setFormData((prevState) => ({ ...prevState, errors })); //update the state
-    return errors === false; //reture true if the form is valid -no errors
-  };
-  
   //****************************JSX CODE**********************************
   return (
     <form className={classes.editDialog} onSubmit={handleFormSubmission}>
       <input
         type="text"
         placeholder="Title"
-        name="newTitle"
-        value={formData.newTitle}
+        name="title"
+        value={formData.title}
         onChange={handleFormInputsChange}
         required
       ></input>
 
       <textarea
-        name="newContent"
+        name="content"
         placeholder="Take a note..."
         rows="4"
-        value={formData.newContent}
+        value={formData.content}
         onChange={handleFormInputsChange}
         required
       ></textarea>
@@ -88,9 +69,9 @@ const EditDialog = ({noteData, setShowEdit,handleCloseButtonClick,  setNewNotesA
       <input
         type="date"
         placeholder="Date"
-        name="newDate"
+        name="creationDate"
         className="date"
-        value={formData.newDate}
+        value={formData.creationDate}
         min="2020-01-01"
         max="2025-01-01"
         onChange={handleFormInputsChange}

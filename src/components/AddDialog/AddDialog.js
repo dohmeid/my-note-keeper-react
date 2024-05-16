@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { addNote } from "../../services/notesApi";
+import { fetchData, isFormValid } from "../../utils/functions";
 
-const AddDialog = ({setNewNotesArray,originalNotesArray,setOriginalNotesArray,}) => {
+const AddDialog = ({ setNotesArray }) => {
 
   //****************************STATES & HOOKS**********************************
   const [isFormExpanded, setIsFormExpanded] = useState(false); //to expand the form when clicking on it
@@ -10,12 +12,6 @@ const AddDialog = ({setNewNotesArray,originalNotesArray,setOriginalNotesArray,})
     errors: false,
   });
 
-  /*useEffect(() => {
-    console.log("in AddNote.js");
-    console.log(originalNotesArray);
-  }, []); 
- */
-
   //****************************EVENT LISTENERS****************************
   //this function activates when the user clicks on the Form
   const handleFormClick = () => {
@@ -23,27 +19,25 @@ const AddDialog = ({setNewNotesArray,originalNotesArray,setOriginalNotesArray,})
   };
 
   //this function activates when the user clicks on Done button - to submit the form
-  const handleFormSubmission = (e) => {
+  const handleFormSubmission = async (e) => {
     e.preventDefault(); //stop the default behaviour of submitting the input's values to the website url
 
-    if (isFormValid()) {
-      //the form is valid, submit data
-      //console.log("entered form data = ");
-      //console.log(formData);
+    if (isFormValid(formData, setFormData, false)) {
+      let newNote = {
+        "title": formData.title,
+        "content": formData.content,
+      }
 
-      setOriginalNotesArray([
-        ...originalNotesArray,
-        { title: formData.title, content: formData.content, date: "15/5/2024" }, // and one new item at the end
-      ]);
+      try {
+        await addNote(newNote);
+        fetchData(setNotesArray);
+      } catch (error) {
+        console.error("Error adding the note:", error);
+      }
 
-      setNewNotesArray([
-        ...originalNotesArray, 
-        { title: formData.title, content: formData.content, date: "15/5/2024" }, // and one new item at the end
-      ]);
       resetForm();
-    } 
+    }
     else {
-      //the form is invalid, do nothing
       alert("Form is invalid - empty inputs are not allowed");
     }
   };
@@ -61,19 +55,6 @@ const AddDialog = ({setNewNotesArray,originalNotesArray,setOriginalNotesArray,})
   };
 
   //****************************FUNCTIONS**********************************
-  //this function validates the form input fields
-  const isFormValid = () => {
-    let errors = false;
-
-    // Check if inputs are empty or spaces
-    if ( formData.title.trim().length === 0 || formData.content.trim().length === 0) {
-      errors = true;
-    }
-
-    setFormData((prevState) => ({ ...prevState, errors })); //update the state
-    return errors === false; //reture true if the form is valid -no errors
-  };
-
   //this function resets the form inputs and collapse it
   const resetForm = () => {
     setIsFormExpanded(false);     //close the form input feilds & close the take a note feild

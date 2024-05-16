@@ -1,37 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import AddDialog from "./components/AddDialog/AddDialog";
 import Cards from "./components/Cards/Cards";
-import { NOTES } from "./data/notes";
+import {fetchData} from "./utils/functions";
 
 function App() {
   //****************************STATES & HOOKS**********************************
-  const [originalNotesArray, setOriginalNotesArray] = useState(NOTES); //this state is initialized to the original notes array from the API
-  const [newNotesArray, setNewNotesArray] = useState(NOTES); //this array contains filtered group of data from the originalArray
+  const [notesArray, setNotesArray] = useState([]); //this state is initialized to the original notes array from the API
+
+  useEffect(() => {
+    fetchData(setNotesArray);
+  }, []);
+
 
   //****************************JSX CODE**********************************
   return (
     <div className="appContainer">
       <Header
-        originalNotesArray={originalNotesArray}
-        setNewNotesArray={setNewNotesArray}
+        notesArray={notesArray}
       />
 
       <AddDialog
-        setNewNotesArray={setNewNotesArray}
-        originalNotesArray={originalNotesArray}
-        setOriginalNotesArray={setOriginalNotesArray}
+         setNotesArray={setNotesArray}
       />
 
       <Cards
+        notesArray={notesArray}
+        setNotesArray={setNotesArray}
+      />
+
+    </div>
+  );
+}
+
+/*
+
+  <Cards
         newNotesArray={newNotesArray}
         setNewNotesArray={setNewNotesArray}
         originalNotesArray={originalNotesArray}
         setOriginalNotesArray={setOriginalNotesArray}
       />
-    </div>
-  );
-}
+
+      */
 
 export default App;

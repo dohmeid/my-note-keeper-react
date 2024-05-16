@@ -2,13 +2,12 @@ import React from "react";
 import "./Header.module.css";
 import SearchBar from "./SearchBar/SearchBar ";
 
-const Header = ({ originalNotesArray, setNewNotesArray }) => {
+const Header = ({ notesArray }) => {
   return (
     <header>
       <h1>My Note Keeper</h1>
       <SearchBar
-        originalNotesArray={originalNotesArray}
-        setNewNotesArray={setNewNotesArray}
+        notesArray={notesArray}
       />
     </header>
   );
