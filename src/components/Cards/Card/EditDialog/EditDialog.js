@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./EditDialog.module.css";
-import { updateNote } from "../../../../services/notesApi";
-import { fetchData, isFormValid } from "../../../../utils/functions";
+import { updateNote } from "../../../../services/API/NotesApi";
+import { fetchData, isFormValid } from "../../../../services/Utility/Utils";
 
 const EditDialog = ({ noteData, setShowEdit, handleCloseButtonClick, setNotesArray }) => {
 

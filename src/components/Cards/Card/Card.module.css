@@ -1,8 +1,8 @@
 .card {
     width: 16rem;
     height: 13rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
+    margin-right: 3rem;
+    margin-bottom: 2rem;
     border-radius: 1rem;
     border: 1.5px solid var(--light-grey-shade);
     padding: 1rem 1rem 0rem 1rem;
@@ -10,6 +10,14 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: left;
+    background-color:#ffc73ab4 ;
+    
+  /* const noteColors = {
+     red: "#f070708a",
+     yellow: "#fee47f",
+     green: "#aae793",
+     blue: "#b2e2fa"
+   };*/
 
     i {
         align-self: end;

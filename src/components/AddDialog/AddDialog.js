@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { addNote } from "../../services/notesApi";
-import { fetchData, isFormValid } from "../../utils/functions";
+import { addNote } from "../../services/API/NotesApi";
+import { fetchData, isFormValid } from "../../services/Utility/Utils";
 
 const AddDialog = ({ setNotesArray }) => {
 
@@ -54,7 +54,6 @@ const AddDialog = ({ setNotesArray }) => {
     resetForm();
   };
 
-  //****************************FUNCTIONS**********************************
   //this function resets the form inputs and collapse it
   const resetForm = () => {
     setIsFormExpanded(false);     //close the form input feilds & close the take a note feild

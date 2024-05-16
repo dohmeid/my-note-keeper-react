@@ -1,11 +1,10 @@
 //note: this file contains all the functions that are utilized/common between the different components
-import { fetchNotes } from "../services/notesApi";
+import { fetchNotes } from "../API/NotesApi";
 
 //this function fetchs the data from the api and updates the screen using the setState
 export const fetchData = async (setStateFunction) => {
   try {
     const data = await fetchNotes();
-    console.log(data.response); // This will log the data array
     setStateFunction(data.response);
   } catch (error) {
     console.error('Error fetching data: ', error);
