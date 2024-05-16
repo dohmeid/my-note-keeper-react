@@ -4,6 +4,7 @@ import Card from "./Card/Card";
 
 const Cards = (props) => {
   const arr = props.newNotesArray;
+  
   //rendering the notes list
   const NOTES_LIST = arr.map((note, index) => (
     <Card

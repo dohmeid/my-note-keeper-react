@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
-import AddNote from "./components/AddNote/AddNote";
+import AddDialog from "./components/AddDialog/AddDialog";
 import Cards from "./components/Cards/Cards";
 import { NOTES } from "./data/notes";
 
@@ -15,18 +15,21 @@ function App() {
     <div className="appContainer">
       <Header
         originalNotesArray={originalNotesArray}
-        newNotesArray={newNotesArray}
         setNewNotesArray={setNewNotesArray}
       />
-      <AddNote
+
+      <AddDialog
         setNewNotesArray={setNewNotesArray}
         originalNotesArray={originalNotesArray}
         setOriginalNotesArray={setOriginalNotesArray}
       />
-      <Cards newNotesArray={newNotesArray} 
-       setNewNotesArray={setNewNotesArray}
-       originalNotesArray={originalNotesArray}
-       setOriginalNotesArray={setOriginalNotesArray}/>
+
+      <Cards
+        newNotesArray={newNotesArray}
+        setNewNotesArray={setNewNotesArray}
+        originalNotesArray={originalNotesArray}
+        setOriginalNotesArray={setOriginalNotesArray}
+      />
     </div>
   );
 }

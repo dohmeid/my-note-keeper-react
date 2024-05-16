@@ -2,38 +2,19 @@ import React from "react";
 import classes from "./SearchBar.module.css";
 
 const SearchBar = ({ originalNotesArray, setNewNotesArray }) => {
-  //****************************STATES & HOOKS**********************************
 
+  //this handler activates when the user enters an input to the search bar
+  const handleSearchQuery = (e) => {
+    let searchQuery = e.target.value.toLowerCase();
 
-  //****************************EVENT LISTENERS****************************
-
-  //****************************FUNCTIONS**********************************
-  //Search bar functionality: displays only events that match the search query
-  const handleSearch = (e) => {
-    e.preventDefault();
-    let searchQuery = e.target.value.toLowerCase(); //get the search query
-
-    if (searchQuery.length > 0) {
-      console.log(originalNotesArray);
-      let filteredNotesArray = originalNotesArray.filter(
-        (note) =>
-          note.title.toLowerCase().includes(searchQuery) ||
-          note.content.toLowerCase().includes(searchQuery)
-      );
-      setNewNotesArray(filteredNotesArray);
-    }
-
-    /*  let filteredNotesArray = notesArray.filter(
-      (note) =>
-        note.title.toLowerCase().includes(searchQuery) ||
-        note.content.toLowerCase().includes(searchQuery)
+    let filteredNotesArray = originalNotesArray.filter((note) =>
+      note.title.toLowerCase().includes(searchQuery) || 
+      note.content.toLowerCase().includes(searchQuery)
     );
-    //displayTasks(filteredTasksArray);
-    setNotesArray(filteredNotesArray);*/
+
+    setNewNotesArray(filteredNotesArray); //to re-render the new filtered notes list
   };
 
-  // onKeyUp={handleSearch}
-  //****************************JSX CODE**********************************
   return (
     <div className={classes.searchContainer}>
       <i className="bi bi-search" aria-hidden="true"></i>
@@ -42,7 +23,7 @@ const SearchBar = ({ originalNotesArray, setNewNotesArray }) => {
         name="search"
         aria-label="search for a note"
         placeholder="Search..."
-        onChange={handleSearch}
+        onChange={handleSearchQuery}
       />
     </div>
   );
