@@ -5,6 +5,8 @@
 ### :stars: Overview
 This repository creates a note-keeping application that performs CRUD operations on notes. It consists of a frontend (FE) component that complements the backend (BE) part of the website. 
 
+Note -> the backend of this project was made earlier it can be found here -> https://github.com/dohmeid/my-note-keeper
+
 -----
 ### :dart: Features
 - Each note has: a title, content, a creation date.
@@ -31,6 +33,23 @@ This repository creates a note-keeping application that performs CRUD operations
 </div>
 
 -----
+### :joystick: Getting Started 
+To run this application locally, follow these steps:
+1. prepare the server side app by following these steps
+   - Clone the backend repository -> **`git clone https://github.com/dohmeid/my-note-keeper.git`**
+   - Go to folder my-note-keeper-react -> **`cd my-note-keeper`**
+   - Install the required dependencies -> **`npm i express mongoose`**  **`npm i --save-dev dotnet nodemon`**
+   - Make sure you have MongoDB installed and running locally.
+   - Start the server using: **`npm start`**
+
+2. prepare the client side app by following these steps
+   - Clone the backend repository       ->   **`git clone https://github.com/dohmeid/my-note-keeper-react.git`**
+   - Go to folder my-note-keeper-react  ->   **`cd my-note-keeper-react`**
+   - Install the required dependencies  ->   **`npm i `**
+   - Start the development server using ->   **`npm start`**
+   -  You can access the project by navigating to http://localhost:3000 in your web browser.
+
+-----
 ### :eye: Preview
 1. get all the notes
 ![get](https://github.com/dohmeid/my-note-keeper-react/assets/90987176/92e44200-98c7-4a33-a7a6-a87fc21b396a)
@@ -47,24 +66,4 @@ This repository creates a note-keeping application that performs CRUD operations
 5. search for a note
 ![search](https://github.com/dohmeid/my-note-keeper-react/assets/90987176/53bbb14b-1211-4e0a-a514-36af20912cac)
 
------
-### :joystick: Getting Started 
-To run this application locally, follow these steps:
-1. Clone the repository:
-   ```
-   git clone https://github.com/dohmeid/my-note-keeper-react.git
-   ```
-2. Go to folder my-note-keeper-react
-   ```
-   cd my-note-keeper-react
-   ```
-3. Install the required dependencies from package.json
-   ```
-   npm i
-   ```
 
-4. Start the development server using:
-   ```
-    npm start
-   ```
-5. You can access the project by navigating to http://localhost:3000 in your web browser.
