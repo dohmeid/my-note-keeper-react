@@ -9,6 +9,7 @@ header {
     h1 {
         font-size: 1.5rem;
         padding-right: 5rem;
-        font-weight: lighter;
+        font-family: cursive;
+        color: #102C57;
     }
 }

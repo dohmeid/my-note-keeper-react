@@ -48,9 +48,9 @@ const Card = ({ noteData, setNotesArray }) => {
   return (
     <>
       <div className={classes.card} onClick={handleNoteClick}>
-        <h4>{noteData.title}</h4>
-        <h3>{noteData.content}</h3>
-        <h5 className="date">{noteData.creationDate.slice(0, 10)}</h5>
+        <h3>{noteData.title}</h3>
+        <p className={classes.content}>{noteData.content}</p>
+        <p className="date">{noteData.creationDate.slice(0, 10)}</p>
         <i className="bi bi-trash" onClick={handleTrashIconClick}></i>
       </div>
 

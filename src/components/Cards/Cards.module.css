@@ -1,9 +1,10 @@
 .cardsContainer {
-    width: 100%;
-    padding: 2.5rem 8rem;
-
+    padding: 2.5rem 0;
+   
     ul {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 }

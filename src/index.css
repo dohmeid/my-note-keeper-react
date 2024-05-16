@@ -2,7 +2,6 @@
   --dark-grey-shade: #6d6f72;
   --medium-grey-shade: rgb(166, 163, 163);
   --light-grey-shade: rgb(239, 239, 239);
-  --blue-shade: #1D9BF0;
 }
 
 * {
@@ -48,12 +47,12 @@ textarea {
 
 input[type="text"] {
   height: 2rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 textarea {
   resize: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .date{
