@@ -18,10 +18,6 @@ This repository creates a note-keeping application that performs CRUD operations
 - The app handles the potential errors gracefully. If an error occurs, the API returns a suitable status code and a descriptive error message.
 
 -----
-### :eye: Preview
-You can access a live demo of this application here -> (still under development) 
-
------
 
 ### :space_invader: Technologies Used
 <div align="left">
@@ -35,7 +31,23 @@ You can access a live demo of this application here -> (still under development)
 </div>
 
 -----
+### :eye: Preview
+1. get all the notes
+![get](https://github.com/dohmeid/my-note-keeper-react/assets/90987176/92e44200-98c7-4a33-a7a6-a87fc21b396a)
 
+2. add a new note
+![add](https://github.com/dohmeid/my-note-keeper-react/assets/90987176/a829ad48-16c0-4f98-ad40-b95522616f37)
+
+3. delete a note
+![delete](https://github.com/dohmeid/my-note-keeper-react/assets/90987176/0b4d5d65-73a9-490e-bc50-4dd298f45831)
+
+4. update a note
+![update](https://github.com/dohmeid/my-note-keeper-react/assets/90987176/8b736b94-e3b0-4ddb-aac1-3d71c874bd02)
+
+5. search for a note
+![search](https://github.com/dohmeid/my-note-keeper-react/assets/90987176/53bbb14b-1211-4e0a-a514-36af20912cac)
+
+-----
 ### :joystick: Getting Started 
 To run this application locally, follow these steps:
 1. Clone the repository:
