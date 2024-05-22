@@ -1,0 +1,23 @@
+.deleteDialog  {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45rem;
+    height: 10rem;
+    background-color: #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.7rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h2,
+    h3 {
+        border: none;
+        font-weight: 500;
+        padding: 0.4rem;
+        color: var(--dark-grey-shade);
+    }
+}
