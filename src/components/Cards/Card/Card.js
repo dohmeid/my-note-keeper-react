@@ -11,7 +11,6 @@ const Card = ({ noteData, setNotesArray }) => {
   const [showDelete, setShowDelete] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
 
-
   //****************************EVENT LISTENERS****************************
   //this function activates when the user clicks on the Note Card -> shows edit dialog
   const handleNoteClick = () => {
@@ -40,8 +39,9 @@ const Card = ({ noteData, setNotesArray }) => {
       fetchData(setNotesArray);
     } catch (error) {
       console.error("Error deleting the note:", error);
+    } finally {
+      setShowDelete(false);
     }
-    setShowDelete(false);
   }
 
   //****************************JSX CODE**********************************

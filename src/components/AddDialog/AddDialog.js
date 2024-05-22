@@ -8,8 +8,7 @@ const AddDialog = ({ setNotesArray }) => {
   const [isFormExpanded, setIsFormExpanded] = useState(false); //to expand the form when clicking on it
   const [formData, setFormData] = useState({
     title: "",
-    content: "",
-    errors: false,
+    content: ""
   });
 
   //****************************EVENT LISTENERS****************************
@@ -22,7 +21,7 @@ const AddDialog = ({ setNotesArray }) => {
   const handleFormSubmission = async (e) => {
     e.preventDefault(); //stop the default behaviour of submitting the input's values to the website url
 
-    if (isFormValid(formData, setFormData, false)) {
+    if (isFormValid(formData)) {
       let newNote = {
         "title": formData.title,
         "content": formData.content,
@@ -33,9 +32,9 @@ const AddDialog = ({ setNotesArray }) => {
         fetchData(setNotesArray);
       } catch (error) {
         console.error("Error adding the note:", error);
+      } finally {
+        resetForm();
       }
-
-      resetForm();
     }
     else {
       alert("Form is invalid - empty inputs are not allowed");

@@ -8,8 +8,7 @@ const EditDialog = ({ noteData, setShowEdit, handleCloseButtonClick, setNotesArr
   const [formData, setFormData] = useState({
     title: noteData.title,
     content: noteData.content,
-    creationDate: noteData.creationDate.slice(0, 10),
-    errors: false,
+    creationDate: noteData.creationDate.slice(0, 10)
   });
 
   //****************************EVENT LISTENERS****************************
@@ -17,7 +16,7 @@ const EditDialog = ({ noteData, setShowEdit, handleCloseButtonClick, setNotesArr
   const handleFormSubmission = async (e) => {
     e.preventDefault(); //stop the default behaviour of submitting the input's values to the website url
 
-    if (isFormValid(formData, setFormData, true)) {
+    if (isFormValid(formData)) {
       let newNote = {
         "_id": noteData._id,
         "title": formData.title,
@@ -30,9 +29,9 @@ const EditDialog = ({ noteData, setShowEdit, handleCloseButtonClick, setNotesArr
         fetchData(setNotesArray);
       } catch (error) {
         console.error("Error deleting the note:", error);
+      } finally {
+        setShowEdit(false);
       }
-
-      setShowEdit(false);
     }
     else {
       alert("Form is invalid - empty inputs are not allowed");

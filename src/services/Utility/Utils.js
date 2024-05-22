@@ -12,7 +12,7 @@ export const fetchData = async (setStateFunction) => {
 };
 
 //this function validates form input fields
-export const isFormValid = (formData, setFormData, isEditForm) => {
+export const isFormValid = (formData) => {
   let errors = false;
 
   // Check if inputs are empty or spaces
@@ -21,12 +21,11 @@ export const isFormValid = (formData, setFormData, isEditForm) => {
   }
 
   //if the form is an edit note form - make an extra validation for the date input feild
-  if (isEditForm) {
-    if (formData.newDate === null || formData.newDate === "") {
+  if (formData.creationDate !== undefined) {
+    if (formData.creationDate === null || formData.creationDate === "") {
       errors = true;
     }
   }
 
-  setFormData((prevState) => ({ ...prevState, errors })); //update the state
   return errors === false; //reture true if the form is valid -no errors
 };
